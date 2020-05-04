@@ -17,7 +17,7 @@ import { BrandedButton, ErrorText, HeaderText } from '../../components/Text';
 import { ValidatedTextInput } from '../../components/ValidatedTextInput';
 import { ValidationError, ValidationErrors } from '../../components/ValidationError';
 import UserService, { isUSCountry } from '../../core/user/UserService';
-import { PatientInfosRequest } from '../../core/user/dto/UserAPIContracts';
+import { AssessmentInfosRequest } from '../../core/user/dto/UserAPIContracts';
 import i18n from '../../locale/i18n';
 import Navigator from '../Navigation';
 import { ScreenParamList } from '../ScreenParamList';
@@ -55,7 +55,8 @@ export default class WhereAreYouScreen extends Component<LocationProps, object> 
   handleUpdate(values: WhereAreYouData) {
     const { currentPatient, assessmentId } = this.props.route.params;
     const location = values.hospitalStatus;
-    const promise = this.updateAssessment(location);
+    const promise = this.updateAssessment(values);
+
     if (['hospital', 'back_from_hospital'].includes(location)) {
       promise
         .then((response) =>
@@ -81,15 +82,18 @@ export default class WhereAreYouScreen extends Component<LocationProps, object> 
     let infos = {
       location: formData.hospitalStatus,
       // TODO: Create below fields in backend
-      admitted_to_hospital: formData.hospitalAdmission === 'yes',
-    } as Partial<PatientInfosRequest>;
+    } as Partial<AssessmentInfosRequest>;
 
-    if (infos.admitted_to_hospital) {
-      infos = {
-        ...infos,
-        hospital_stay_length: formData.hospitalStayLength,
-      };
+    if (infos.location === 'back_from_hospital') {
+      infos = { ...infos, admitted_to_hospital: formData.hospitalAdmission === 'yes' };
+      if (infos.admitted_to_hospital) {
+        infos = {
+          ...infos,
+          hospital_stay_length: parseInt(formData.hospitalStayLength, 10),
+        };
+      }
     }
+
     const promise = userService.updateAssessment(assessmentId, infos);
     return promise;
   }
@@ -98,8 +102,16 @@ export default class WhereAreYouScreen extends Component<LocationProps, object> 
     // TODO: Add error messages
     medicalAdviceSought: Yup.array<string>().min(1),
     hospitalStatus: Yup.string().required(),
-    hospitalAdmission: Yup.string().required(),
-    hospitalStayLength: Yup.number().required(),
+    hospitalAdmission: Yup.string().when('hospitalStatus', {
+      is: 'back_from_hospital',
+      then: Yup.string().required()
+    }),
+    hospitalStayLength: Yup.number().when(['hospitalStatus', 'hospitalAdmission'], {
+      is: (status, admitted) => {
+        return status === 'back_from_hospital' && admitted === 'yes';
+      },
+      then: Yup.number().required(),
+    }),
   });
 
   render() {
@@ -109,10 +121,6 @@ export default class WhereAreYouScreen extends Component<LocationProps, object> 
       { label: i18n.t('where-are-you.picker-location-home'), value: 'home' },
       { label: i18n.t('where-are-you.picker-location-hospital'), value: 'hospital' },
       { label: i18n.t('where-are-you.picker-location-back-from-hospital'), value: 'back_from_hospital' },
-      {
-        label: i18n.t('where-are-you.picker-location-back-from-hospital-already-reported'),
-        value: 'back_from_hospital',
-      },
     ];
 
     const medicalAdviceCheckboxes = [
@@ -153,7 +161,7 @@ export default class WhereAreYouScreen extends Component<LocationProps, object> 
                               if (checked) {
                                 adviceArray.push(checkBox.value);
                               } else {
-                                adviceArray = adviceArray.filter((val) => val != checkBox.value);
+                                adviceArray = adviceArray.filter((val) => val !== checkBox.value);
                               }
                               props.setFieldValue('medicalAdviceSought', adviceArray);
                             }}>
@@ -172,7 +180,7 @@ export default class WhereAreYouScreen extends Component<LocationProps, object> 
                         return (
                           <CheckboxItem
                             key={checkBox.label}
-                            value={props.values.hospitalStatus == checkBox.value}
+                            value={props.values.hospitalStatus === checkBox.value}
                             onChange={(value: boolean) => {
                               props.setFieldValue('hospitalStatus', value ? checkBox.value : '');
                             }}>
@@ -205,6 +213,8 @@ export default class WhereAreYouScreen extends Component<LocationProps, object> 
                   </>
                 )}
 
+                {!!Object.keys(props.errors).length && <ValidationErrors errors={props.errors as string[]} />}
+
                 <BrandedButton onPress={props.handleSubmit}>
                   <Text>{i18n.t('next-question')}</Text>
                 </BrandedButton>
@@ -218,15 +228,38 @@ export default class WhereAreYouScreen extends Component<LocationProps, object> 
 }
 
 const styles = StyleSheet.create({
-  form: {
-    marginVertical: 32,
-  },
-
-  fieldWrapper: {
-    // marginVertical: 32,
+  fieldRow: {
+    flexDirection: 'row',
   },
 
   textItemStyle: {
     borderColor: 'transparent',
+  },
+
+  primaryField: {
+    flex: 6,
+  },
+
+  primaryFieldRow: {
+    flex: 6,
+    flexDirection: 'row',
+  },
+
+  tertiaryField: {
+    flex: 5,
+    marginRight: 8,
+  },
+
+  secondaryField: {
+    flex: 2,
+  },
+
+  picker: {
+    // width: '68%',
+    width: screenWidth - 16, // TODO: Fix width to something sensible
+  },
+
+  form: {
+    marginVertical: 32,
   },
 });
