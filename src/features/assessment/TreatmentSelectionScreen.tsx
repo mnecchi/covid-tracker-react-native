@@ -40,9 +40,29 @@ export default class TreatmentSelectionScreen extends Component<TreatmentSelecti
   render() {
     const currentPatient = this.props.route.params.currentPatient;
     const title =
-      this.props.route.params.location == 'back_from_hospital'
+      this.props.route.params.location === 'back_from_hospital'
         ? i18n.t('treatment-selection-title-after')
         : i18n.t('treatment-selection-title-during');
+
+    const treatmentSelectionOptions = [
+      { label: i18n.t('treatment-selection-picker-none'), caption: '', value: 'none' },
+      {
+        label: i18n.t('treatment-selection-picker-oxygen'),
+        caption: i18n.t('treatment-selection-picker-subtext-oxygen'),
+        value: 'oxygen',
+      },
+      {
+        label: i18n.t('treatment-selection-picker-non-invasive-ventilation'),
+        caption: i18n.t('treatment-selection-picker-subtext-non-invasive-ventilation'),
+        value: 'nonInvasiveVentilation',
+      },
+      {
+        label: i18n.t('treatment-selection-picker-invasive-ventilation'),
+        caption: i18n.t('treatment-selection-picker-subtext-invasive-ventilation'),
+        value: 'invasiveVentilation',
+      },
+      { label: i18n.t('treatment-selection-picker-other'), caption: '', value: 'other' },
+    ];
 
     return (
       <Screen profile={currentPatient.profile} navigation={this.props.navigation}>
@@ -55,42 +75,16 @@ export default class TreatmentSelectionScreen extends Component<TreatmentSelecti
         </ProgressBlock>
 
         <Form style={styles.form}>
-          <FieldWrapper style={styles.fieldWrapper}>
-            <BigButton onPress={() => this.handleTreatment('none')}>
-              <Text>{i18n.t('treatment-selection-picker-none')}</Text>
-            </BigButton>
-          </FieldWrapper>
-
-          <FieldWrapper style={styles.fieldWrapper}>
-            <BigButton onPress={() => this.handleTreatment('oxygen')}>
-              <Text>{i18n.t('treatment-selection-picker-oxygen')}</Text>
-            </BigButton>
-            <CaptionText style={styles.indentedText}>{i18n.t('treatment-selection-picker-subtext-oxygen')}</CaptionText>
-          </FieldWrapper>
-
-          <FieldWrapper style={styles.fieldWrapper}>
-            <BigButton onPress={() => this.handleTreatment('nonInvasiveVentilation')}>
-              <Text>{i18n.t('treatment-selection-picker-non-invasive-ventilation')}</Text>
-            </BigButton>
-            <CaptionText style={styles.indentedText}>
-              {i18n.t('treatment-selection-picker-subtext-non-invasive-ventilation')}
-            </CaptionText>
-          </FieldWrapper>
-
-          <FieldWrapper style={styles.fieldWrapper}>
-            <BigButton onPress={() => this.handleTreatment('invasiveVentilation')}>
-              <Text>{i18n.t('treatment-selection-picker-invasive-ventilation')}</Text>
-            </BigButton>
-            <CaptionText style={styles.indentedText}>
-              {i18n.t('treatment-selection-picker-subtext-invasive-ventilation')}
-            </CaptionText>
-          </FieldWrapper>
-
-          <FieldWrapper style={styles.fieldWrapper}>
-            <BigButton onPress={() => this.handleTreatment('other')}>
-              <Text>{i18n.t('treatment-selection-picker-other')}</Text>
-            </BigButton>
-          </FieldWrapper>
+          {treatmentSelectionOptions.map((item) => {
+            return (
+              <FieldWrapper style={styles.fieldWrapper} key={item.value}>
+                <BigButton onPress={() => this.handleTreatment(item.value)}>
+                  <Text>{item.label}</Text>
+                </BigButton>
+                <CaptionText style={styles.indentedText}>{item.caption}</CaptionText>
+              </FieldWrapper>
+            );
+          })}
         </Form>
       </Screen>
     );
