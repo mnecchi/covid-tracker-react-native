@@ -1,6 +1,5 @@
 import { RouteProp } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
-import { HitTestResultTypes } from 'expo/build/AR';
 import { Formik, FormikProps } from 'formik';
 import { cloneDeep } from 'lodash';
 import { Form, Icon, Item, Label, Picker, Text, CheckBox } from 'native-base';
@@ -11,8 +10,6 @@ import * as Yup from 'yup';
 import { BigButton } from '../../components/Button';
 import { CheckboxItem, CheckboxList } from '../../components/Checkbox';
 import DropdownField from '../../components/DropdownField';
-import { ScreenParamList } from '../ScreenParamList';
-
 import { GenericTextField } from '../../components/GenericTextField';
 import ProgressStatus from '../../components/ProgressStatus';
 import Screen, { FieldWrapper, Header, ProgressBlock, screenWidth } from '../../components/Screen';
@@ -23,6 +20,7 @@ import UserService, { isUSCountry } from '../../core/user/UserService';
 import { PatientInfosRequest } from '../../core/user/dto/UserAPIContracts';
 import i18n from '../../locale/i18n';
 import Navigator from '../Navigation';
+import { ScreenParamList } from '../ScreenParamList';
 
 type LocationProps = {
   navigation: StackNavigationProp<ScreenParamList, 'WhereAreYou'>;
@@ -76,6 +74,7 @@ export default class WhereAreYouScreen extends Component<LocationProps, object> 
   }
 
   private updateAssessment(formData: WhereAreYouData) {
+    // TODO: Revisit this once backend fields are defined
     const assessmentId = this.props.route.params.assessmentId;
     const userService = new UserService();
 
@@ -89,13 +88,14 @@ export default class WhereAreYouScreen extends Component<LocationProps, object> 
       infos = {
         ...infos,
         hospital_stay_length: formData.hospitalStayLength,
-      }
+      };
     }
     const promise = userService.updateAssessment(assessmentId, infos);
     return promise;
   }
 
   registerSchema = Yup.object().shape({
+    // TODO: Add error messages
     medicalAdviceSought: Yup.array<string>().min(1),
     hospitalStatus: Yup.string().required(),
     hospitalAdmission: Yup.string().required(),
