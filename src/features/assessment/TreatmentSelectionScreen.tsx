@@ -47,9 +47,19 @@ export default class TreatmentSelectionScreen extends Component<TreatmentSelecti
     const treatmentSelectionOptions = [
       { label: i18n.t('treatment-selection-picker-none'), caption: '', value: 'none' },
       {
-        label: i18n.t('treatment-selection-picker-oxygen'),
-        caption: i18n.t('treatment-selection-picker-subtext-oxygen'),
-        value: 'oxygen',
+        label: i18n.t('treatment-selection-picker-oral-medication'),
+        caption: i18n.t('treatment-selection-picker-subtext-oral-medication'),
+        value: 'oralMedication',
+      },
+      {
+        label: i18n.t('treatment-selection-picker-iv-medication'),
+        caption: i18n.t('treatment-selection-picker-subtext-iv-medication'),
+        value: 'ivMedication',
+      },
+      {
+        label: i18n.t('treatment-selection-picker-oxygen-only'),
+        caption: i18n.t('treatment-selection-picker-subtext-oxygen-only'),
+        value: 'oxygenOnly',
       },
       {
         label: i18n.t('treatment-selection-picker-non-invasive-ventilation'),
