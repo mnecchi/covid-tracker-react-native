@@ -351,6 +351,10 @@
 
   "where-are-you": {
     "question-location": "Where are you right now?",
+    "question-medical-advice": "Since you last reported, have you sought medical advice for suspected COVID-19 symptoms? (tick all that apply)",
+    "question-visited-hospital": "Since you last reported, have you been in a hospital or emergency department for suspected COVID-19 symptoms?",
+    "question-asked-to-stay": "Were you asked to stay in the hospital (“Admitted”)?",
+    "question-admission-length": "How many nights were you in the hospital?",
     "picker-location-home": "I'm at home. I haven't been to a hospital for suspected COVID-19 symptoms.",
     "picker-location-hospital": "I am at the hospital with suspected COVID-19 symptoms.",
     "picker-location-back-from-hospital": "I am back from the hospital, I'd like to tell you about my treatment.",
