@@ -227,6 +227,10 @@ export type AssessmentInfosRequest = {
   never_used_shortage: string;
   // Allowed values should be defined app side.
   // Can be null
+
+  admitted_to_hospital: boolean;
+  hospital_stay_length: number;
+
 };
 
 export type AssessmentResponse = {
