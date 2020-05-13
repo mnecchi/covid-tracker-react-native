@@ -68,10 +68,14 @@ export default class SelectProfileScreen extends Component<RenderProps, State> {
     }
   }
 
-  async startAssessment(patientId: string) {
+  async startAssessment(patientId: string, index: number) {
     const userService = new UserService();
     const currentPatient = await userService.getCurrentPatient(patientId);
-    this.props.navigation.navigate('StartAssessment', { currentPatient });
+    if (index == 0) { // TODO And havent been asked
+      this.props.navigation.navigate("ValidationStudyIntro")
+    } else {
+      this.props.navigation.navigate('StartAssessment', { currentPatient });
+    }
   }
 
   getNextAvatarName() {
@@ -112,7 +116,7 @@ export default class SelectProfileScreen extends Component<RenderProps, State> {
                   const avatarImage = getAvatarByName((patient.avatar_name ?? 'profile1') as AvatarName);
                   return (
                     <View style={styles.cardContainer} key={key(patient)}>
-                      <TouchableOpacity onPress={() => this.startAssessment(patient.id)}>
+                      <TouchableOpacity onPress={() => this.startAssessment(patient.id , i)}>
                         <Card style={styles.card}>
                           <Image source={avatarImage} style={styles.avatar} resizeMode="contain" />
                           <ClippedText>{patient.name}</ClippedText>

@@ -65,4 +65,7 @@ export type ScreenParamList = {
   // Completion screens
   ThankYou: undefined;
   ViralThankYou: undefined;
+
+  ValidationStudyIntro: undefined;
+  ValidationStudyConsent: { viewOnly: boolean };
 };

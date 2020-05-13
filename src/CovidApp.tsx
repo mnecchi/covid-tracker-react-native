@@ -50,6 +50,8 @@ import BeforeWeStartUS from './features/register/us/BeforeWeStartUS';
 import { NursesConsentUSScreen } from './features/register/us/NursesConsentUS';
 import { PrivacyPolicyUSScreen } from './features/register/us/PrivacyPolicyUSScreen';
 import TermsOfUseUSScreen from './features/register/us/TermsOfUseUSScreen';
+import ValidationStudyIntroScreen from './features/register/gb/ValidationStudyIntroScreen';
+import { ValidationStudyConsentScreen } from './features/register/gb/ValidationStudyConsentScreen';
 
 const Stack = createStackNavigator<ScreenParamList>();
 const Drawer = createDrawerNavigator();
@@ -165,6 +167,16 @@ export default class ZoeApp extends Component<object, State> {
         <Stack.Screen name="SelectProfile" component={SelectProfileScreen} options={{ headerShown: false }} />
         <Stack.Screen name="AdultOrChild" component={AdultOrChildScreen} options={{ headerShown: false }} />
         <Stack.Screen name="ProfileBackDate" component={ProfileBackDateScreen} options={{ headerShown: false }} />
+        <Stack.Screen
+          name="ValidationStudyIntro"
+          component={ValidationStudyIntroScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="ValidationStudyConsent"
+          component={ValidationStudyConsentScreen}
+          options={{ headerShown: false }}
+        />
       </Stack.Navigator>
     );
   }
