@@ -10,8 +10,8 @@ import { ScreenParamList } from '../../ScreenParamList';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 type PropsType = {
-  navigation: StackNavigationProp<ScreenParamList, 'NursesConsentUS'>;
-  route: RouteProp<ScreenParamList, 'NursesConsentUS'>;
+  navigation: StackNavigationProp<ScreenParamList, 'ValidationStudyConsent'>;
+  route: RouteProp<ScreenParamList, 'ValidationStudyConsent'>;
 };
 
 interface TermsState {
@@ -46,7 +46,7 @@ export class ValidationStudyConsentScreen extends Component<PropsType, TermsStat
 
   handleAgreeClicked = async () => {
     if (this.state.agreeToAbove) {
-      this.props.navigation.navigate('StartAssessment');
+      this.props.navigation.navigate('StartAssessment', { currentPatient: this.props.route.params.currentPatient });
     }
   };
 

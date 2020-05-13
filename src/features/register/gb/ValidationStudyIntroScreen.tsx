@@ -9,11 +9,12 @@ import { ScreenParamList } from '../../ScreenParamList';
 import { icon } from '../../../../assets';
 import { colors } from '../../../../theme';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { RouteProp } from '@react-navigation/native';
 
 type Props = {
   navigation: StackNavigationProp<ScreenParamList, 'ValidationStudyIntro'>;
+  route: RouteProp<ScreenParamList, 'ValidationStudyIntro'>;
 };
-
 
 export default class ValidationStudyIntroScreen extends Component<Props, object> {
   constructor(props: Props) {
@@ -43,7 +44,12 @@ export default class ValidationStudyIntroScreen extends Component<Props, object>
 
           <BrandedButton
             style={styles.mainButton}
-            onPress={() => this.props.navigation.navigate('ValidationStudyConsent', { viewOnly: false })}>
+            onPress={() =>
+              this.props.navigation.navigate('ValidationStudyConsent', {
+                viewOnly: false,
+                currentPatient: this.props.route.params.currentPatient,
+              })
+            }>
             <Text>{i18n.t('validation-study-intro.yes')}</Text>
           </BrandedButton>
         </View>

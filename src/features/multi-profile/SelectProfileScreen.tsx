@@ -11,7 +11,7 @@ import { colors } from '../../../theme';
 import DaysAgo from '../../components/DaysAgo';
 import { Header } from '../../components/Screen';
 import { ClippedText, ErrorText, HeaderText, RegularText, SecondaryText } from '../../components/Text';
-import UserService from '../../core/user/UserService';
+import UserService, {isGBCountry} from '../../core/user/UserService';
 import i18n from '../../locale/i18n';
 import { AvatarName, getAvatarByName } from '../../utils/avatar';
 import { ScreenParamList } from '../ScreenParamList';
@@ -71,8 +71,8 @@ export default class SelectProfileScreen extends Component<RenderProps, State> {
   async startAssessment(patientId: string, index: number) {
     const userService = new UserService();
     const currentPatient = await userService.getCurrentPatient(patientId);
-    if (index == 0) { // TODO And havent been asked
-      this.props.navigation.navigate("ValidationStudyIntro")
+    if (isGBCountry() && index == 0) { // TODO And havent been asked
+      this.props.navigation.navigate("ValidationStudyIntro", { currentPatient })
     } else {
       this.props.navigation.navigate('StartAssessment', { currentPatient });
     }
