@@ -46,6 +46,8 @@ export class ValidationStudyConsentScreen extends Component<PropsType, TermsStat
 
   handleAgreeClicked = async () => {
     if (this.state.agreeToAbove) {
+      // TODO Send to backend
+      // TODO Correct the navigation stack to start from profile screen
       this.props.navigation.navigate('StartAssessment', { currentPatient: this.props.route.params.currentPatient });
     }
   };
