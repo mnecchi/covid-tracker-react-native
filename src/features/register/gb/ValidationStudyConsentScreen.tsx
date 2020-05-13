@@ -55,11 +55,8 @@ export class ValidationStudyConsentScreen extends Component<PropsType, TermsStat
       <View style={{ flex: 1, backgroundColor: colors.white }}>
         <SafeAreaView style={styles.mainContainer}>
           <ScrollView>
-            <RegularBoldText>RESEARCH STUDY/HEALTHCARE WORKER INFORMED CONSENT{'\n'}</RegularBoldText>
-            <RegularText>
-              This research consent form has been approved by the Institutional Review Board at Massachusetts General
-              Hospital (Partners Human Research Committee Protocol #2020P000909 Version Date: 3/31/2020){'\n'}
-            </RegularText>
+            <RegularBoldText>VALIDATION STUDY INFORMED CONSENT{'\n'}</RegularBoldText>
+
             <RegularBoldText>About this consent form{'\n'}</RegularBoldText>
             <RegularText>
               Please read this form carefully. It tells you important information about a research study.
@@ -69,19 +66,33 @@ export class ValidationStudyConsentScreen extends Component<PropsType, TermsStat
               {'\n'}
             </RegularText>
 
-            <RegularBoldText>Why is this research study being done?{'\n'}</RegularBoldText>
+            <RegularBoldText>Invitation Paragraph{'\n'}</RegularBoldText>
             <RegularText>
-              We are doing this research to determine health and lifestyle factors related to the symptoms and outcomes
-              associated with the Coronavirus (COVID-19). By using this app that consists of a series of questions meant
-              to collect data on whether you are well or have symptoms, you will be helping medical science and
-              healthcare providers across the country to better understand this disease. This app is designed to be a
-              tool for data collection and to help medical professionals and researchers understand this disease. It
-              does not give health advice. The Centers for Disease Control and Prevention has publicly-accessible
-              information related to COVID-19 that can be found at:{' '}
-              <ClickableText onPress={() => this.openUrl('https://www.cdc.gov/coronavirus/2019-ncov/index.html')}>
-                https://www.cdc.gov/coronavirus/2019-ncov/index.html
-              </ClickableText>
-              .{'\n'}
+              King’s College London would like to invite you to participate in this research study which forms part of
+              Covid-19 research. Before you decide whether you want to take part, it is important for you to understand
+              why the research is being done and what your participation will involve. Please take time to read the
+              following information carefully and discuss it with others if you wish. Ask study researchers if there is
+              anything that is not clear or if you would like more information.
+              {'\n'}
+            </RegularText>
+
+            <RegularBoldText>What is the purpose of the study?{'\n'}</RegularBoldText>
+            <RegularText>
+              The purpose of the study is to test the level of accuracy of computer software (sometimes called
+              algorithms or prediction models) that could be used as a “digital test” to evaluate whether an individual
+              is infected with Covid-19 (SARS-CoV-2), based on their symptoms reported in the Covid Symptom Study app.
+              This study is designed to establish how accurate this digital test is for different people. The potential
+              benefit of a digital test is that it is simple to complete, it produces results quickly, and it can be
+              accessed by a large proportion of the population, some of which have limited access to physical testing
+              for Covid-19.
+              {'\n\n'}
+              Participants that develop new symptoms during the study may be asked to have a standard swab test for
+              Covid-19, depending on test availability and your development of symptoms. The accuracy of the digital
+              test will be evaluated by comparing its predictions with the results from an actual Covid-19 swab test.
+              {'\n\n'}
+              This study therefore aims to evaluate the use of this digital test as a diagnostic tool for Covid-19
+              infection.
+              {'\n'}
             </RegularText>
 
             <RegularBoldText>How long will I take part in this research study?{'\n'}</RegularBoldText>
@@ -92,28 +103,35 @@ export class ValidationStudyConsentScreen extends Component<PropsType, TermsStat
               {'\n'}
             </RegularText>
 
-            <RegularBoldText>What will happen in this research study?{'\n'}</RegularBoldText>
+            <RegularBoldText>Why have I been invited to take part?{'\n'}</RegularBoldText>
 
             <RegularText>
-              We will ask you a series of questions related to your occupation, your possible affiliation with certain
-              ongoing studies or research centers, basic personal characteristics (gender/age), your health status, any
-              medications you are using, how you are feeling, what symptoms you might be experiencing, and what, if any,
-              treatments you’ve received either in outpatient or in-hospital settings. We will also ask you about what
-              the outcome of any of those treatments. All questions are optional and you need not answer any questions
-              you are uncomfortable answering.
+              You are being invited to participate in this study because you are already using the UK-version of the
+              Covid-19 Symptom Study app to report your own health, are at least 18 years of age, have reported in the
+              app that you live in the UK, and you have not reported testing positive from a previous Covid-19 test.
               {'\n'}
             </RegularText>
 
-            <RegularBoldText>
-              What are the risks and possible discomforts from being in this research study?{'\n'}
-            </RegularBoldText>
+            <RegularBoldText>What will happen if I take part?{'\n'}</RegularBoldText>
 
             <RegularText>
-              We don’t expect you to experience any risks or possible discomforts associated with being in this study.
-              Some people may not feel comfortable answering some of the questions asked, but no question is required to
-              be answered. While necessary security precautions have been taken, there is a minor risk as there is with
-              all digital data that information shared with us may be inadvertently accessed by others not identified in
-              this consent form.
+              If you choose to take part in this study, you may be asked to have a Covid-19 swab test, and to report
+              your test result in the app. If you are asked to be tested, it does not mean we think you have Covid-19.
+              {'\n\n'}
+              On behalf of King’s College London, Zoe Global Ltd (Zoe, the creator of the Covid-19 Symptom Study app)
+              will oversee the arrangements for swab testing. You will receive instructions from Zoe in the app or by
+              email, on how to organise your swab test, either by ordering a testing kit in the mail or visiting a
+              Regional Testing Centre. Alternatively, Zoe may apply for testing on your behalf to the Department of
+              Health and Social Care, through an online platform where Zoe will share your name, mobile phone number,
+              and email address to register you for testing. Organising and completing the Covid-19 test is optional.
+              Once you have received your test result, you will be asked to report it in the Covid-19 Symptom Study app.
+              {'\n\n'}
+              The researchers conducting this study have been granted the allowance to test up to 10,000 individuals per
+              week in this way. This number of swab tests may be insufficient to test all the participants in this study
+              who qualify for testing. Participants who are eligible for swab testing, but do not complete their test or
+              do not report their test result, will receive feedback on the likelihood that they have SARS-CoV-2 based
+              on their individual reported symptoms as predicted by the prediction model. These predictions will be
+              communicated to the participant using the app on behalf of researchers at King’s College London.
               {'\n'}
             </RegularText>
 
@@ -124,181 +142,154 @@ export class ValidationStudyConsentScreen extends Component<PropsType, TermsStat
               {'\n'}
             </RegularText>
 
-            <RegularBoldText>
-              Can I still get medical care within hospitals affiliated with the research in this study, or if I stop
-              taking part?{'\n'}
-            </RegularBoldText>
+            <RegularBoldText>Do I have to take part?{'\n'}</RegularBoldText>
             <RegularText>
-              Yes. Your decision won’t change the medical care you get within affiliated hospitals now or in the future.
-              There will be no penalty, and you won’t lose any benefits you receive now or have a right to receive.
-              Taking part in this research study is up to you. You can decide not to take part. If you decide to take
-              part now, you can change your mind and drop out later.
+              Participation is completely voluntary. You should only take part if you want to and choosing not to take
+              part will not disadvantage you in anyway. You do not need to participate in this study in order to
+              continue to use the app. Once you have read the information sheet, please contact us if you have any
+              questions that will help you make a decision about taking part. If you decide to take part we would ask
+              you to complete the consent form below and you will receive an electronic copy of this consent form to
+              keep.
               {'\n'}
             </RegularText>
 
-            <RegularBoldText>What should I do if I want to stop taking part in the study?{'\n'}</RegularBoldText>
+            <RegularBoldText>What are the possible risks of taking part?{'\n'}</RegularBoldText>
 
             <RegularText>
-              If you take part in this research study, and want to drop out, you should tell us. You may withdraw your
-              consent at any time by emailing{' '}
-              <ClickableText onPress={() => this.openUrl('mailto:leavecovidtracking-us@joinzoe.com')}>
-                leavecovidtracking-us@joinzoe.com
-              </ClickableText>
+              There are no risks identified from taking part in this study.
               {'\n'}
             </RegularText>
 
-            <RegularBoldText>Will I be paid to take part in this research study?{'\n'}</RegularBoldText>
+            <RegularBoldText>What are the possible benefits of taking part?{'\n'}</RegularBoldText>
 
             <RegularText>
-              No payments will be made for participation in this voluntary research study.
+              By participating in this research, you will be contributing to the advancement of science and research on
+              Covid-19. You will also receive your personal prediction of the likelihood that you are infected with
+              SARS-CoV-2 based on your reported symptoms. This is provided for your interest. The prediction is not a
+              clinical diagnostic tool, it has not been validated and you must not use it to make any health decisions.
               {'\n'}
             </RegularText>
 
-            <RegularBoldText>What will I have to pay for if I take part in this research study?{'\n'}</RegularBoldText>
-            <RegularText>
-              Voluntary participation in this research study will come at no-cost to you.
-              {'\n'}
-            </RegularText>
+            <RegularBoldText>Data handling and confidentiality{'\n'}</RegularBoldText>
 
-            <RegularBoldText>
-              If I have questions or concerns about this research study, whom can I call?{'\n'}
-            </RegularBoldText>
             <RegularText>
-              Zoe Global Ltd. Staff has built the app and is supporting and responsible for it. Any questions may be
-              sent to{' '}
-              <ClickableText onPress={() => this.openUrl('mailto:covidtrackingquestions-us@joinzoe.com')}>
-                covidtrackingquestions-us@joinzoe.com
-              </ClickableText>
-              {'\n'}
-              {'\n'}
-              You may also contact local U.S. based study staff at predict@mgh.harvard.edu.
-              {'\n'}
-              {'\n'}
-              If you were directed to this app because of your participation in another research study, you should
-              contact the applicable study contact or Institutional Review Board that is associated with each study. If
-              the study is affiliated with Mass General Brigham Health / Partners Healthcare, please contact the
-              Partners Human Research Committee office. You can call them at 857-282-1900.
-              {'\n'}
-            </RegularText>
-
-            <RegularBoldText>
-              If I take part in this research study, how will you protect my privacy?{'\n'}
-            </RegularBoldText>
-            <RegularText>
-              During this research, identifiable information about your health will be collected. In the rest of this
-              section, we refer to this information simply as “health information”. In general, under federal law,
-              health information is private. However, there are exceptions to this rule, and you should know who may be
-              able to see, use, and share your health information for research and why they may need to do so.
-              {'\n'}
-            </RegularText>
-
-            <RegularBoldText>In this study, we will collect health information about:</RegularBoldText>
-            <RegularText>
-              - your health status and condition related to COVID-19
-              {'\n'}- any medications you are using
-              {'\n'}- how you are feeling
-              {'\n'}- what symptoms you might be experiencing
-              {'\n'}- what, if any, treatments you’ve received either in outpatient or in-hospital settings
-              {'\n'}- the outcome of any of those treatments
-              {'\n'}
-            </RegularText>
-
-            <RegularBoldText>
-              Who may see, use, and share your identifiable health information and why they may need to do so:
-              {'\n'}
-            </RegularBoldText>
-            <RegularText>
-              For complete details of the data we collect, who may see, use, and share your data and the reasons for
-              doing so, please see the{' '}
+              Your data will be processed in accordance with the General Data Protection Regulation 2016 (GDPR). As a
+              user of the Covid-19 Symptom Study app, you have consented to Zoe’s terms including the{' '}
               <ClickableText
-                onPress={() => this.props.navigation.navigate('PrivacyPolicyUS', { viewOnly: this.viewOnly })}>
+                onPress={() => this.props.navigation.navigate('PrivacyPolicyUK', { viewOnly: this.viewOnly })}>
                 Privacy Policy
-              </ClickableText>
-              . In brief, the privacy plan details that we may share your data with the researchers involved with this
-              study which includes Zoe , other researchers and medical centers that are part of this study and their
-              ethics boards, in addition to other individuals.
-              {'\n'}
-              No information you share will be used for commercial purposes. We will not use or share your information
-              for any mailing or marketing list.
-              {'\n'}
-              {'\n'}
-              Some people or groups who get your health information might use or share your health information without
-              your permission in ways that are not described in this form. We share your health information only as
-              provided in this consent form, and we ask anyone who receives it from us to take measures to protect your
-              privacy.
-              {'\n'}
-              {'\n'}
-              Because research is an ongoing process, we cannot give you an exact date when we will either destroy or
-              stop using or sharing your health information.
-              {'\n'}
-              {'\n'}
-              We may link data collected as a part of this app with additional data collected through your participation
-              in other research studies you have consented to at the following institutions: Massachusetts General
-              Hospital, Brigham and Women’s Hospital, Mass General Brigham Hospitals (formerly Partners Healthcare), or
-              other partnering research institutions. Deidentified data, meaning that any information that can identify
-              you as an individual has been removed, may be included in public databases in the future.
+              </ClickableText>{' '}
+              which is available from the app menu at all times. All these terms continue to apply to the present study.
+              Your anonymised data may be shared with other members of the clinical or scientific community as outlined
+              in the Privacy Policy, including international collaborators given the global nature of this research. No
+              personal information about you will be shared by Zoe with King’s College London as a result of this
+              research. Before sharing your data with King’s College London, an anonymous code will be used to replace
+              your personal details (your name, email address and phone number if you have provided them) and your
+              postcode will be replaced by a broader location identification.
               {'\n'}
             </RegularText>
 
-            <RegularBoldText>Your Privacy Rights{'\n'}</RegularBoldText>
+            <RegularBoldText>What if I change my mind about taking part?{'\n'}</RegularBoldText>
             <RegularText>
-              You have the right not to sign this form that allows us to use and share your health information for
-              research; however, if you don’t sign it, you cannot take part in this research study.
-              {'\n'}
-              {'\n'}
-              You have the right to withdraw your permission for us to use or share your health information for this
-              research study. If you want to withdraw your permission, you must notify us in writing by emailing{' '}
-              <ClickableText onPress={() => this.openUrl('mailto:leavecovidtracking-us@joinzoe.com')}>
-                leavecovidtracking-us@joinzoe.com
-              </ClickableText>
-              {'\n'}
-              {'\n'}
-              Once permission is withdrawn, you cannot continue to take part in the study.
-              {'\n'}
-              {'\n'}
-              If you withdraw your permission, we will not be able to take back information that has already been used
-              or shared with others.
-              {'\n'}
-              {'\n'}
-              You have the right to see and get a copy of your health information. To ask for this information, please
-              contact the person in charge of this study. You may only get such information after research is finished.
-              {'\n'}
-              {'\n'}
-              By clicking below, you consent to our using the personal information we collect through your use of this
-              app in the way we have described.
-              {'\n'}
-              {'\n'}
-              For more information about how we use and share personal information about you, please see our{' '}
-              <ClickableText
-                onPress={() => this.props.navigation.navigate('PrivacyPolicyUS', { viewOnly: this.viewOnly })}>
-                privacy notice
-              </ClickableText>
-              .{'\n'}
+              You are free to withdraw at any point from this study, without having to give a reason, up until 10th May
+              2021. You can withdraw by contacting Zoe at{' '}
+              <ClickableText onPress={() => this.openUrl('mailto:covidtrackingquestions@kcl.ac.uk')}>
+                covidtrackingquestion@kcl.ac.uk
+              </ClickableText>{' '}
+              and quoting in the subject line: “Validation Study Withdrawal”.
+              {'\n\n'}
+              Withdrawing from the study will not affect you in any way and you can continue to take part in reporting
+              in the Covid-19 app as you did before you joined this study. If you choose to withdraw from this study
+              King’s College London will not retain the information you have given thus far for the purpose of this
+              research, except when such data has already been included in aggregated analyses at the time of your
+              withdrawal.
               {'\n'}
             </RegularText>
 
-            <RegularBoldText>Informed Consent and Authorization{'\n'}</RegularBoldText>
-            <RegularBoldText>Statement of Person Giving Informed Consent and Authorization{'\n'}</RegularBoldText>
+            <RegularBoldText>How is this study being funded?{'\n'}</RegularBoldText>
             <RegularText>
-              - I have read this consent form.
-              {'\n'}- This research study has been explained to me, including risks and possible benefits (if any),
-              other possible treatments or procedures, and other important things about the study.
-              {'\n'}- I have had the opportunity to ask questions.
-              {'\n'}- I understand the information given to me.
+              This study is being funded by King’s College London and Zoe in order to help with the coronavirus
+              pandemic.
               {'\n'}
             </RegularText>
 
-            <RegularBoldText>Digital Signature of Subject:{'\n'}</RegularBoldText>
+            <RegularBoldText>What will happen to the results of this study?{'\n'}</RegularBoldText>
             <RegularText>
-              I give my consent to take part in this research study and agree to allow my health information to be used
-              and shared as described above.
+              The results of this study will be used for public health and academic research purposes, and may support
+              future use of the digital test to diagnose Covid-19. The digital test will not be used to generate a
+              profit for either King’s College London or Zoe. The results of this study may be published, for example in
+              an academic journal.
               {'\n'}
+            </RegularText>
+
+            <RegularBoldText>Who should I contact for further information?{'\n'}</RegularBoldText>
+            <RegularText>
+              If you have any questions or require more information about this study, please contact the study staff
+              using the following contact details that are dedicated to this study:
               {'\n'}
-              In addition, you acknowledge that you have read and understand the Privacy Policy and Terms of Use. The
-              privacy policy describes what data is collected, how it is stored, secured, and shared, and with whom, and
-              what your rights are to that data. The terms state that that the application is not meant to give medical
-              advice, is not meant for emergencies and is not a medical device, and describes limitations of liability
-              and data sharing plans.
+              <ClickableText onPress={() => this.openUrl('mailto:covidtrackingquestions@kcl.ac.uk')}>
+                covidtrackingquestion@kcl.ac.uk
+              </ClickableText>
+              {'\n'}
+            </RegularText>
+
+            <RegularBoldText>What if I have further questions, or if something goes wrong?{'\n'}</RegularBoldText>
+            <RegularText>
+              If this research has harmed you in any way or if you wish to make a complaint about the conduct of the
+              study you can contact King's College London using the details below for further advice and information:{' '}
+              <ClickableText onPress={() => this.openUrl('mailto:covidtrackingquestions@kcl.ac.uk')}>
+                covidtrackingquestion@kcl.ac.uk
+              </ClickableText>
+              {'\n'}
+            </RegularText>
+
+            <RegularBoldText>
+              Thank you for reading this information sheet and for considering taking part in this research.{'\n'}
+            </RegularBoldText>
+
+            <RegularBoldText>Statement of consent:{'\n'}</RegularBoldText>
+            <RegularText>
+              - I confirm that I have read and understood the information sheet dated 07/05/20, version number 1.0, for
+              the above project. I have had the opportunity to consider the information and asked questions which have
+              been answered to my satisfaction.
+              {'\n'}
+            </RegularText>
+
+            <RegularText>
+              - I consent voluntarily to be a participant in this project and understand that I can refuse to take part
+              and can withdraw from the project at any time, up until 10th May 2021, without having to give a reason. I
+              understand that any information collected about me through this study will not be retained, except when
+              already included in aggregated data analyses at the time of my withdrawal.{'\n'}
+            </RegularText>
+
+            <RegularText>
+              - I consent to the processing of my personal information for the purposes explained to me in the
+              Information Sheet. I understand that such information will be handled in accordance with the terms of the
+              General Data Protection Regulation (GDPR) and the UK Data Protection Act 2018.
+              {'\n'}
+            </RegularText>
+
+            <RegularText>
+              - I understand that my information may be subject to review by responsible individuals from the College
+              for monitoring and audit purposes.
+              {'\n'}
+            </RegularText>
+
+            <RegularText>
+              - I understand that confidentiality and anonymity will be maintained, and it will not be possible to
+              identify me in any research outputs.
+              {'\n'}
+            </RegularText>
+
+            <RegularText>
+              - I consent to my anonymised data being shared with third parties which are within and outside the EU as
+              outlined in the participant information sheet.
+              {'\n'}
+            </RegularText>
+
+            <RegularText>
+              - I understand that I must not take part if I fall under the exclusion criteria as detailed in the
+              information sheet and explained to me by the researcher.
               {'\n'}
             </RegularText>
 
