@@ -38,10 +38,13 @@ export default class ValidationStudyIntroScreen extends Component<Props, object>
         </ScrollView>
 
         <View style={styles.buttonContainer}>
-          <TouchableOpacity onPress={() => {
-            // TODO Correct the navigation stack to start from profile screen
-            this.props.navigation.navigate('StartAssessment', { currentPatient: this.props.route.params.currentPatient })
-          }}>
+          <TouchableOpacity
+            onPress={() => {
+              // TODO Correct the navigation stack to start from profile screen
+              this.props.navigation.navigate('StartAssessment', {
+                currentPatient: this.props.route.params.currentPatient,
+              });
+            }}>
             <Text>{i18n.t('validation-study-intro.no')}</Text>
           </TouchableOpacity>
 
